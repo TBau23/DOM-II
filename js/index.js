@@ -29,6 +29,7 @@ document.addEventListener('keydown', event => {
     }
 })
 
+
 // double click for picture borders and double click to reverse it
 
 const mapPic = document.querySelector('.img-content img')
@@ -46,7 +47,7 @@ document.addEventListener('dblclick', event => {
     }
 })
 
-// load
+// load with border
 
 const wholePage = document.querySelector('html')
 
@@ -68,8 +69,49 @@ pageTitle.addEventListener('click', event => {
     }
 })
 
+// constant mouse coordinates
+
+// document.addEventListener('mousemove', event => {
+//     console.log(`X coordinate: ${event.clientX}, Y Coordinate: ${event.clientY}`)
+// })
 
 
+// hover pics
 
+const boatPic = document.querySelector('.content-destination img') 
+
+boatPic.addEventListener('mouseenter', event => {
+    boatPic.style.opacity = '0.5';
+    boatPic.style.transition = '0.5s'
+})
+
+boatPic.addEventListener('mouseleave', event => {
+    boatPic.style.opacity = '1'
+})
+
+// trip generator 
+const places = ['Morocco', 'Brazil', 'Thailand', 'Italy', 'Japan', 'Mongolia', 'Norway', 'Panama', 'Argentina', 'Egypt', 'Nigeria', 'Spain']
+const tripHeader = document.querySelector('.text-content h2')
+
+tripHeader.addEventListener('mouseenter', event => {
+    tripHeader.textContent = `Let's go to ${places[Math.floor(Math.random() * places.length)]}!`
+})
+
+tripHeader.addEventListener('mouseleave', event => {
+    tripHeader.textContent = "Let's go!"
+})
+
+// disrupt link function 
+
+const allLinks = Array.from(document.getElementsByTagName('a'))
+
+function linkDisruptor(arr) {
+    for(i = 0; i < arr.length; i++) {
+        arr[i].addEventListener('click', event => {
+            event.preventDefault();
+            console.log('Link Disrupted')
+        })
+    }
+}
 
 
