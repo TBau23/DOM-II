@@ -103,15 +103,28 @@ tripHeader.addEventListener('mouseleave', event => {
 
 // disrupt link function 
 
-const allLinks = Array.from(document.getElementsByTagName('a'))
+const nav = document.querySelector('nav')
 
-function linkDisruptor(arr) {
-    for(i = 0; i < arr.length; i++) {
-        arr[i].addEventListener('click', event => {
-            event.preventDefault();
-            console.log('Link Disrupted')
-        })
-    }
-}
+nav.addEventListener('click', event => {
+    event.preventDefault()
+    console.log('Link disrupted')
+})
+
+// stop the bubbling 
+
+Array.from(document.all).forEach(arg => {
+    arg.addEventListener('click', function(event){
+        console.log('The target of the event', event.target)
+        console.log('The current target', event.currentTarget)
+        console.log('\n')
+
+        event.stopPropagation()
+    })
+})
+
+
+ 
+
+
 
 
